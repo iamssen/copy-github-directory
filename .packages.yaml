@@ -1,3 +1,11 @@
-sample-package:
-  version: 1.1.0
+generate-github-directory:
+  version: 0.1.1
   tag: latest
+  module: commonjs
+  packageJson:
+    bin:
+      'generate-github-directory': ./bin/generate-github-directory.js
+      'ghdir': ./bin/generate-github-directory.js
+    keywords:
+      - generate
+      - github

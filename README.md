@@ -1,12 +1,34 @@
-# Rocket Punch Template
+# `generate-github-directory`
 
-- `npm run build` build your packages
-- `npm run publish` publish your packages to npm registry
-- `npm run view` view your remote information of packages
-- `npm run doctor` check configs is validated for rocket-punch
-- `npm test` test with jest
+![CI](https://github.com/rocket-hangar/generate-github-directory/workflows/Test/badge.svg)
+[![codecov](https://codecov.io/gh/rocket-hangar/generate-github-directory/branch/master/graph/badge.svg)](https://codecov.io/gh/rocket-hangar/generate-github-directory)
 
-# Start development
+```sh
+npx generate-github-directory https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web
 
-1. Change the directory name `src/sample-package` to you want.
-2. Update `.packages.yaml` file.
+# cd web
+# npm install
+```
+
+or 
+
+```sh
+npx generate-github-directory https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web my-project
+
+# cd my-project
+# npm install
+```
+
+or
+
+```js
+const { generateGithubDirectory } = require('generate-github-directory');
+
+const directory = await generateGithubDirectory({
+  url: 'https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web',
+  // targetDirectory: 'my-project',
+  // targetDirectory: '/absolute/path/my-project',
+});
+
+console.log(directory);
+```
