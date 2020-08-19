@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "rocket-punch build",
+    "publish": "rocket-punch publish",
+    "view": "rocket-punch view",
+    "doctor": "rocket-punch doctor",
+    "test": "jest --colors",
+    "coverage": "jest --coverage --colors",
+    "format": "prettier --write \"src/{**/*,*}/*.{ts,tsx}\"",
+    "lint": "eslint \"src/{**/*,*}/*.{ts,tsx}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/{**/*,*}/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint",
+      "jest --colors --findRelatedTests"
+    ]
+  },
+  "devDependencies": {
+    "@ssen/eslint-config": "^1.1.0",
+    "@ssen/prettier-config": "^1.0.0",
+    "@types/eslint": "^7.2.0",
+    "@types/jest": "^26.0.9",
+    "@types/prettier": "^2.0.2",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "husky": "^4.2.5",
+    "jest": "^26.3.0",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "rocket-punch": "^2.1.0",
+    "ts-jest": "^26.2.0"
+  }
+}
