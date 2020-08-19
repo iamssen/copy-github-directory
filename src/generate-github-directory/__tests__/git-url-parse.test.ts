@@ -1,7 +1,7 @@
 import gitUrlParse, { GitUrl } from 'git-url-parse';
 
 describe('git-url-parse', () => {
-  test('should get directories', async () => {
+  test('should parse the tree type url', async () => {
     const url: GitUrl = gitUrlParse(
       'https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web',
     );
@@ -11,6 +11,7 @@ describe('git-url-parse', () => {
       name: 'rocket-punch-workspace-example',
       ref: 'master',
       filepath: 'samples/web',
+      filepathtype: 'tree',
     });
 
     const res = await fetch(
@@ -21,5 +22,17 @@ describe('git-url-parse', () => {
     const json = await res.json();
 
     expect(Array.isArray(json)).toBeTruthy();
+  });
+
+  test('should parse the root url', async () => {
+    const url: GitUrl = gitUrlParse('https://github.com/rocket-hangar/rocket-punch-workspace-example');
+
+    expect(url).toMatchObject<Partial<GitUrl>>({
+      owner: 'rocket-hangar',
+      name: 'rocket-punch-workspace-example',
+      ref: '',
+      filepath: '',
+      filepathtype: '',
+    });
   });
 });

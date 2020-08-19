@@ -20,21 +20,31 @@ export async function generateGithubDirectory({
   targetDirectory,
   cwd = process.cwd(),
 }: GenerateGithubDirectoryParams): Promise<string> {
-  const { name, owner, filepath, ref }: GitUrl = gitUrlParse(url);
+  const { name, owner, filepath, filepathtype, ref: _ref }: GitUrl = gitUrlParse(url);
 
-  const contentsRes = await fetch(
-    `https://api.github.com/repos/${owner}/${name}/contents/${filepath}?ref=${ref}`,
-  );
+  const ref: string =
+    _ref.length > 0
+      ? _ref
+      : await fetch(`https://api.github.com/repos/${owner}/${name}`)
+          .then((res) => res.json())
+          .then(({ default_branch }) => default_branch);
 
-  const contents = await contentsRes.json();
+  const isDirectory: boolean =
+    filepathtype === ''
+      ? true
+      : await fetch(`https://api.github.com/repos/${owner}/${name}/contents/${filepath}?ref=${ref}`)
+          .then((res) => res.json())
+          .then((contents) => Array.isArray(contents));
 
-  if (!Array.isArray(contents)) {
+  if (!isDirectory) {
     throw new Error(`This url seems not a directory. "${url}"`);
   }
 
   const directory: string = targetDirectory
-    ? path.resolve(cwd, targetDirectory)
-    : path.resolve(cwd, path.basename(filepath));
+    ? path.resolve(cwd, targetDirectory) // user specific directory
+    : filepath === ''
+    ? path.resolve(cwd, name) // is root type url
+    : path.resolve(cwd, path.basename(filepath)); // is tree type url
 
   await fs.mkdirpSync(directory);
 

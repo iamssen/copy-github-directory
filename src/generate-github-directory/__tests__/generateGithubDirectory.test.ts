@@ -4,6 +4,25 @@ import { generateGithubDirectory } from 'generate-github-directory';
 import path from 'path';
 
 describe('generateGithubDirectory', () => {
+  test('should generate the files to a directory by root type url', async () => {
+    // Arrange
+    const cwd: string = await createTmpDirectory();
+
+    // Act
+    await generateGithubDirectory({
+      cwd,
+      url: 'https://github.com/rocket-hangar/rocket-punch-workspace-example',
+    });
+
+    // Assert
+    const targetDirectory: string = path.join(cwd, 'rocket-punch-workspace-example');
+
+    expect(fs.existsSync(path.join(targetDirectory, 'package.json'))).toBeTruthy();
+    expect(fs.existsSync(path.join(targetDirectory, 'tsconfig.json'))).toBeTruthy();
+    expect(fs.existsSync(path.join(targetDirectory, 'samples'))).toBeTruthy();
+    expect(fs.statSync(path.join(targetDirectory, 'samples/web')).isDirectory()).toBeTruthy();
+  });
+
   test('should generate the files to a directory what is named by basename of url', async () => {
     // Arrange
     const cwd: string = await createTmpDirectory();
