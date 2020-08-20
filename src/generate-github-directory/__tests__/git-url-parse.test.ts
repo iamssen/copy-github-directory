@@ -21,7 +21,11 @@ describe('git-url-parse', () => {
 
     const json = await res.json();
 
-    expect(Array.isArray(json)).toBeTruthy();
+    if (res.status < 299) {
+      expect(Array.isArray(json)).toBeTruthy();
+    } else {
+      console.error(json);
+    }
   });
 
   test('should parse the root url', async () => {
