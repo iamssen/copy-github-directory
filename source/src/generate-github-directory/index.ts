@@ -40,13 +40,19 @@ export async function generateGithubDirectory({
     throw new Error(`This url seems not a directory. "${url}"`);
   }
 
-  const directory: string = targetDirectory
-    ? path.resolve(cwd, targetDirectory) // user specific directory
-    : filepath === ''
-    ? path.resolve(cwd, name) // is root type url
-    : path.resolve(cwd, path.basename(filepath)); // is tree type url
+  let directory: string;
 
-  await fs.mkdirpSync(directory);
+  if (targetDirectory === '.') {
+    directory = cwd; // <cwd>
+  } else {
+    directory = targetDirectory
+      ? path.resolve(cwd, targetDirectory) // <cwd>/<targetDirectory> user specific directory
+      : filepath === ''
+      ? path.resolve(cwd, name) // <cwd>/<repo> is root type url
+      : path.resolve(cwd, path.basename(filepath)); // <cwd>/<dirname> is tree type url
+
+    await fs.mkdirpSync(directory);
+  }
 
   if (fs.readdirSync(directory).length > 0) {
     throw new Error(`directory is not empty. "${directory}"`);

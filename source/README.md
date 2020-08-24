@@ -8,23 +8,17 @@
 ```sh
 npx generate-github-directory https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web
 
-# $PWD/web
+# cd web
+# npm install
 ```
 
 or 
 
 ```sh
-npx generate-github-directory https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web .
-
-# $PWD
-```
-
-or
-
-```sh
 npx generate-github-directory https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web my-project
 
-# $PWD/my-project
+# cd my-project
+# npm install
 ```
 
 or

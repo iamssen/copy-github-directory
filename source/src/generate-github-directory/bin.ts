@@ -24,6 +24,10 @@ export async function run() {
       '$0 https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web some-directory',
       'generate files to {cwd}/some-directory',
     )
+    .example(
+      '$0 https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web .',
+      'generate files to {cwd}',
+    )
     .wrap(null)
     .help('h')
     .alias('h', 'help')
