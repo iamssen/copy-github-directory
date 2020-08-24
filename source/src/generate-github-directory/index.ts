@@ -16,6 +16,14 @@ export interface GenerateGithubDirectoryParams {
   readonly githubToken?: string;
 }
 
+function whitelist(file: string): boolean {
+  switch (file) {
+    case '.git':
+      return false;
+  }
+  return true;
+}
+
 export async function generateGithubDirectory({
   url,
   targetDirectory,
@@ -61,7 +69,7 @@ export async function generateGithubDirectory({
     await fs.mkdirpSync(directory);
   }
 
-  if (fs.readdirSync(directory).length > 0) {
+  if (fs.readdirSync(directory).filter(whitelist).length > 0) {
     throw new Error(`directory is not empty. "${directory}"`);
   }
 
