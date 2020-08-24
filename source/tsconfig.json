@@ -1,0 +1,18 @@
+{
+  "extends": "rocket-punch/tsconfig.base.json",
+  "compilerOptions": {
+    // types
+    "typeRoots": [
+      "../node_modules/@types",
+      "./node_modules/@types",
+      "./@types"
+    ],
+    // path
+    "baseUrl": "src",
+    // output
+    "outDir": "foo"
+  },
+  "include": [
+    "src"
+  ]
+}

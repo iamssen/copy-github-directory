@@ -1,0 +1,13 @@
+{
+  "author": "SSen <i@ssen.name>",
+  "license": "MIT",
+  "repository": "github:rocket-hangar/generate-github-directory",
+  "bugs": "https://github.com/rocket-hangar/generate-github-directory/issues",
+  "homepage": "https://github.com/rocket-hangar/generate-github-directory/tree/master/source/src/{name}",
+  "engines": {
+    "node": ">=10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

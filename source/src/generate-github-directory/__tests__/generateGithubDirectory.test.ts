@@ -42,6 +42,24 @@ describe('generateGithubDirectory', () => {
     expect(fs.statSync(path.join(targetDirectory, 'src')).isDirectory()).toBeTruthy();
   });
 
+  test('should generate the files to current directory', async () => {
+    // Arrange
+    const targetDirectory: string = await createTmpDirectory();
+
+    // Act
+    await generateGithubDirectory({
+      cwd: targetDirectory,
+      targetDirectory: '.',
+      url: 'https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web',
+    });
+
+    // Assert
+    expect(fs.existsSync(path.join(targetDirectory, 'package.json'))).toBeTruthy();
+    expect(fs.existsSync(path.join(targetDirectory, 'tsconfig.json'))).toBeTruthy();
+    expect(fs.existsSync(path.join(targetDirectory, 'src'))).toBeTruthy();
+    expect(fs.statSync(path.join(targetDirectory, 'src')).isDirectory()).toBeTruthy();
+  });
+
   test('should generate the files to the specific directory', async () => {
     // Arrange
     const targetDirectory: string = await createTmpDirectory();
