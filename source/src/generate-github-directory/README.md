@@ -47,3 +47,10 @@ console.log(directory);
   - default directory name: `rocket-punch-workspace-example` 
 - Tree `https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web`
   - default directory name: `web`
+
+# Related Projects
+
+- <https://github.com/rocket-hangar/rocket-punch>
+- <https://github.com/rocket-hangar/rocket-scripts>
+- <https://github.com/rocket-hangar/handbook>
+- <https://github.com/rocket-hangar/generate-github-directory>
