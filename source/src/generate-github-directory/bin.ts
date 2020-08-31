@@ -1,6 +1,9 @@
 import path from 'path';
 import yargs from 'yargs';
-import { generateGithubDirectory, GenerateGithubDirectoryParams } from './index';
+import {
+  generateGithubDirectory,
+  GenerateGithubDirectoryParams,
+} from './index';
 
 export async function run() {
   const {

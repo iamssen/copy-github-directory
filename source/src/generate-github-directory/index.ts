@@ -30,24 +30,37 @@ export async function generateGithubDirectory({
   cwd = process.cwd(),
   githubToken = process.env.GITHUB_TOKEN,
 }: GenerateGithubDirectoryParams): Promise<string> {
-  const { name, owner, filepath, filepathtype, ref: _ref }: GitUrl = gitUrlParse(url);
+  const {
+    name,
+    owner,
+    filepath,
+    filepathtype,
+    ref: _ref,
+  }: GitUrl = gitUrlParse(url);
 
   const headers: HeadersInit | undefined =
-    typeof githubToken === 'string' ? { Authorization: `token ${githubToken}` } : undefined;
+    typeof githubToken === 'string'
+      ? { Authorization: `token ${githubToken}` }
+      : undefined;
 
   const ref: string =
     _ref.length > 0
       ? _ref
-      : await fetch(`https://api.github.com/repos/${owner}/${name}`, { headers })
+      : await fetch(`https://api.github.com/repos/${owner}/${name}`, {
+          headers,
+        })
           .then((res) => res.json())
           .then(({ default_branch }) => default_branch);
 
   const isDirectory: boolean =
     filepathtype === ''
       ? true
-      : await fetch(`https://api.github.com/repos/${owner}/${name}/contents/${filepath}?ref=${ref}`, {
-          headers,
-        })
+      : await fetch(
+          `https://api.github.com/repos/${owner}/${name}/contents/${filepath}?ref=${ref}`,
+          {
+            headers,
+          },
+        )
           .then((res) => res.json())
           .then((contents) => Array.isArray(contents));
 
@@ -75,9 +88,10 @@ export async function generateGithubDirectory({
 
   await pipeline(
     got.stream(`https://codeload.github.com/${owner}/${name}/tar.gz/${ref}`),
-    tar.extract({ cwd: directory, strip: filepath ? filepath.split('/').length + 1 : 1 }, [
-      `${name}-${ref}${filepath ? `/${filepath}` : ''}`,
-    ]),
+    tar.extract(
+      { cwd: directory, strip: filepath ? filepath.split('/').length + 1 : 1 },
+      [`${name}-${ref}${filepath ? `/${filepath}` : ''}`],
+    ),
   );
 
   return directory;

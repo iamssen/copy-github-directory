@@ -3,13 +3,15 @@ function cp(from, to) {
 }
 
 function precommit(...workspaces) {
-  return workspaces.map((workspace) => `yarn workspace ${workspace} run precommit`);
+  return workspaces.map(
+    (workspace) => `yarn workspace ${workspace} run precommit`,
+  );
 }
 
 module.exports = {
   hooks: {
     'pre-commit': [
-      `markdown-source-import "{,!(node_modules)/**/}*.md" --git-add`,
+      `markdown-source-import README.md "source/src/**/*.md" --git-add`,
       ...cp(`README.md`, `source/src/generate-github-directory/README.md`),
       `lint-staged`,
       ...precommit(`source`),

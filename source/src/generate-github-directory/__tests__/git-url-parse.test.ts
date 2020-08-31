@@ -29,7 +29,9 @@ describe('git-url-parse', () => {
   });
 
   test('should parse the root url', async () => {
-    const url: GitUrl = gitUrlParse('https://github.com/rocket-hangar/rocket-punch-workspace-example');
+    const url: GitUrl = gitUrlParse(
+      'https://github.com/rocket-hangar/rocket-punch-workspace-example',
+    );
 
     expect(url).toMatchObject<Partial<GitUrl>>({
       owner: 'rocket-hangar',

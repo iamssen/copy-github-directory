@@ -11,7 +11,7 @@ npx generate-github-directory https://github.com/rocket-hangar/rocket-punch-work
 # $PWD/web
 ```
 
-or 
+or
 
 ```sh
 npx generate-github-directory https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web .
@@ -30,10 +30,11 @@ npx generate-github-directory https://github.com/rocket-hangar/rocket-punch-work
 or
 
 ```js
-const { generateGithubDirectory } = require('generate-github-directory');
+const { generateGithubDirectory } = require("generate-github-directory");
 
 const directory = await generateGithubDirectory({
-  url: 'https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web',
+  url:
+    "https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web",
   // targetDirectory: 'my-project',
   // targetDirectory: '/absolute/path/my-project',
 });
@@ -44,7 +45,7 @@ console.log(directory);
 # Tested URL types
 
 - Root `https://github.com/rocket-hangar/rocket-punch-workspace-example`
-  - default directory name: `rocket-punch-workspace-example` 
+  - default directory name: `rocket-punch-workspace-example`
 - Tree `https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web`
   - default directory name: `web`
 
