@@ -192,8 +192,10 @@ export async function generateGithubDirectory({
 
       // update package.json files
       await Promise.all([
-        fs.writeJson(cwdPackageJson, cwdPackageJsonContents),
-        fs.writeJson(directoryPackageJson, directoryPackageJsonContents),
+        fs.writeJson(cwdPackageJson, cwdPackageJsonContents, { spaces: 2 }),
+        fs.writeJson(directoryPackageJson, directoryPackageJsonContents, {
+          spaces: 2,
+        }),
       ]);
     }
   }
