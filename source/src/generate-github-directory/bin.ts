@@ -9,27 +9,32 @@ export async function run() {
   const {
     _: [url, targetDirectory],
     emit,
+    workspace,
   } = yargs
     .usage('Usage: $0 <url> [targetDirectory]')
     .options({
       emit: {
         type: 'boolean',
         default: true,
-        describe:
-          'if you set this false it will only print options without run (e.g. --no-emit or --emit false)',
+        describe: `if you set this false it will only print options without run (e.g. --no-emit or --emit false)`,
+      },
+      workspace: {
+        type: 'boolean',
+        default: true,
+        describe: `if you don't want to compose workspaces set this false (e.g. --no-workspace or --workspace false)`,
       },
     })
     .example(
-      '$0 https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web',
-      'generate files to {cwd}/web',
+      '$0 https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+      'generate files to $PWD/web',
     )
     .example(
-      '$0 https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web some-directory',
-      'generate files to {cwd}/some-directory',
+      '$0 https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web project',
+      'generate files to $PWD/project',
     )
     .example(
-      '$0 https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web .',
-      'generate files to {cwd}',
+      '$0 https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web .',
+      'generate files to $PWD',
     )
     .wrap(null)
     .help('h')
@@ -45,6 +50,7 @@ export async function run() {
     url,
     targetDirectory,
     cwd: process.cwd(),
+    workspace,
   };
 
   if (!emit) {

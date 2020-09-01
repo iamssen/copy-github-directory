@@ -14,10 +14,10 @@
     "publish": "yarn run test && yarn run build && yarn workspace source run publish --out-dir $PWD/out/packages",
     "view": "yarn workspace source run view",
     "doctor": "yarn workspace source run doctor",
-    "format": "prettier --write \"**/*.{js,ts,tsx}\"",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "test": "yarn workspace source run test",
-    "coverage": "yarn workspace source run coverage --coverageDirectory $PWD/coverage"
+    "coverage": "yarn workspace source run coverage --coverageDirectory $PWD/coverage",
+    "format": "prettier --write \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint \"**/*.{js,ts,tsx}\""
   },
   "lint-staged": {
     "**/src/{**/*,*}.{ts,tsx}": [
