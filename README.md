@@ -19,7 +19,7 @@ Get a Github directory quickly by a simple command.
 
   <img src="doc-assets/2.ghdir.png" width="900" style="max-width: 900px">
 
-  <p align="center" style="text-align: center">Run `generate-github-directory` command with the URL. (It is similar `git clone`)</p>
+  <p align="center" style="text-align: center">Run <code>generate-github-directory</code> command with the URL. (It is similar <code>git clone</code>)</p>
 
 </p>
 
@@ -41,7 +41,7 @@ npx generate-github-directory <url> [directory]
 
 Just use it with `npx` command.
 
-But, if you install, you can get the short command `ghdir` instead of `generate-github-directory`.
+But, if you install (`npm install -g generate-github-directory`), you can get the short command `ghdir` instead of `generate-github-directory`.
 
 # Command
 
