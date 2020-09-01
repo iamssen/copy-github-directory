@@ -126,6 +126,7 @@ export async function generateGithubDirectory({
     throw new Error(`This url seems not a directory. "${url}"`);
   }
 
+  // absolute path
   let directory: string;
 
   if (targetDirectory === '.') {
@@ -184,7 +185,7 @@ export async function generateGithubDirectory({
       // add workspaceName to <cwd>/package.json/[workspaces]
       cwdPackageJsonContents.workspaces = [
         ...cwdPackageJsonContents.workspaces,
-        workspaceName,
+        path.relative(cwd, directory),
       ];
 
       // change name of <directory>/package.json
