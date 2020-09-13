@@ -1,5 +1,5 @@
 {
-  "name": "source",
+  "name": "packages",
   "version": "1.0.0",
   "scripts": {
     "build": "rocket-punch build",
@@ -16,27 +16,27 @@
     ]
   },
   "devDependencies": {
-    "@ssen/tmp-directory": "^2.2.3",
+    "@ssen/tmp-directory": "^2.3.1",
     "@types/fs-extra": "^9.0.1",
     "@types/git-url-parse": "^9.0.0",
-    "@types/jest": "^26.0.12",
-    "@types/node": "^14.6.2",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^14.10.1",
     "@types/node-fetch": "^2.5.7",
     "@types/tar": "^4.0.3",
     "@types/yargs": "^15.0.5",
     "fs-extra": "^9.0.1",
-    "git-url-parse": "^11.1.3",
-    "got": "^11.5.2",
-    "husky": "^4.2.5",
+    "git-url-parse": "^11.2.0",
+    "got": "^11.6.2",
+    "husky": "^4.3.0",
     "jest": "^26.3.0",
-    "lint-staged": "^10.2.13",
+    "lint-staged": "^10.3.0",
     "node-fetch": "^2.6.1",
-    "rocket-punch": "^2.2.3",
+    "rocket-punch": "^2.3.1",
     "tar": "^6.0.5",
     "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.0.2",
-    "yargs": "^15.4.1"
+    "yargs": "^16.0.3"
   }
 }
