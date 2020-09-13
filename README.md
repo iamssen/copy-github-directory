@@ -9,7 +9,7 @@ Get a Github directory quickly by a simple command.
 
 <p align="center" style="text-align: center">
 
-  <img src="doc-assets/1.url.png" width="700" style="max-width: 700px">
+  <img src="https://raw.githubusercontent.com/rocket-hangar/generate-github-directory/master/doc-assets/1.url.png" width="700" style="max-width: 700px">
 
   <p align="center" style="text-align: center">Copy the URL on your web browser.</p>
 
@@ -17,7 +17,7 @@ Get a Github directory quickly by a simple command.
 
 <p align="center">
 
-  <img src="doc-assets/2.ghdir.png" width="900" style="max-width: 900px">
+  <img src="https://raw.githubusercontent.com/rocket-hangar/generate-github-directory/master/doc-assets/2.ghdir.png" width="900" style="max-width: 900px">
 
   <p align="center" style="text-align: center">Run <code>generate-github-directory</code> command with the URL. (It is similar <code>git clone</code>)</p>
 
@@ -25,7 +25,7 @@ Get a Github directory quickly by a simple command.
 
 <p align="center">
 
-  <img src="doc-assets/3.result.png" width="600" style="max-width: 600px">
+  <img src="https://raw.githubusercontent.com/rocket-hangar/generate-github-directory/master/doc-assets/3.result.png" width="600" style="max-width: 600px">
 
   <p align="center" style="text-align: center">That's it!</p>
 
