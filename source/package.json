@@ -30,7 +30,7 @@
     "husky": "^4.2.5",
     "jest": "^26.3.0",
     "lint-staged": "^10.2.13",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "rocket-punch": "^2.2.3",
     "tar": "^6.0.5",
     "ts-jest": "^26.3.0",
