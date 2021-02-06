@@ -47,8 +47,8 @@ export async function run() {
   }
 
   const params: GenerateGithubDirectoryParams = {
-    url,
-    targetDirectory,
+    url: url.toString(),
+    targetDirectory: targetDirectory.toString(),
     cwd: process.cwd(),
     workspace,
   };
