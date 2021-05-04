@@ -22,6 +22,7 @@ describe('git-url-parse', () => {
     const json = await res.json();
 
     if (res.status < 299) {
+      //eslint-disable-next-line jest/no-conditional-expect
       expect(Array.isArray(json)).toBeTruthy();
     } else {
       console.error(json);

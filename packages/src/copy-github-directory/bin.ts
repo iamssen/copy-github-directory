@@ -1,9 +1,6 @@
 import path from 'path';
 import yargs from 'yargs';
-import {
-  generateGithubDirectory,
-  GenerateGithubDirectoryParams,
-} from './index';
+import { copyGithubDirectory, CopyGithubDirectoryParams } from './index';
 
 export async function run() {
   const {
@@ -26,15 +23,15 @@ export async function run() {
     })
     .example(
       '$0 https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
-      'generate files to $PWD/web',
+      'copy files to $PWD/web',
     )
     .example(
       '$0 https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web project',
-      'generate files to $PWD/project',
+      'copy files to $PWD/project',
     )
     .example(
       '$0 https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web .',
-      'generate files to $PWD',
+      'copy files to $PWD',
     )
     .wrap(null)
     .help('h')
@@ -46,7 +43,7 @@ export async function run() {
     throw new Error(`Undefined <url>`);
   }
 
-  const params: GenerateGithubDirectoryParams = {
+  const params: CopyGithubDirectoryParams = {
     url: url.toString(),
     targetDirectory: targetDirectory.toString(),
     cwd: process.cwd(),
@@ -56,7 +53,7 @@ export async function run() {
   if (!emit) {
     console.log(params);
   } else {
-    const directory = await generateGithubDirectory(params);
+    const directory = await copyGithubDirectory(params);
     console.log(`👍 "${url}" ‣‣‣ "${path.relative(process.cwd(), directory)}"`);
   }
 }

@@ -1,13 +1,12 @@
-generate-github-directory:
-  version: 1.2.0
-  tag: latest
+copy-github-directory:
+  version: 1.3.0-alpha.1
+  tag: canary
   module: commonjs
   packageJson:
     bin:
-      'generate-github-directory': ./bin/generate-github-directory.js
-      'ghdir': ./bin/generate-github-directory.js
+      'copy-github-directory': ./bin/copy-github-directory.js
+      'ghcopy': ./bin/copy-github-directory.js
     keywords:
-      - generate
       - github
       - clone
       - download

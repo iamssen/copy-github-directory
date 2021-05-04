@@ -10,7 +10,7 @@ import { promisify } from 'util';
 
 const pipeline = promisify(Stream.pipeline);
 
-export interface GenerateGithubDirectoryParams {
+export interface CopyGithubDirectoryParams {
   /**
    * github url
    *
@@ -57,7 +57,7 @@ export interface GenerateGithubDirectoryParams {
 }
 
 export interface UserConfig {
-  alias?: { [name: string]: string };
+  alias?: Record<string, string>;
 }
 
 function whitelist(file: string): boolean {
@@ -67,20 +67,30 @@ function whitelist(file: string): boolean {
   return true;
 }
 
-export async function generateGithubDirectory({
+export async function copyGithubDirectory({
   url: _url,
   targetDirectory,
   cwd = process.cwd(),
   githubToken = process.env.GITHUB_TOKEN,
   workspace = true,
-}: GenerateGithubDirectoryParams): Promise<string> {
+}: CopyGithubDirectoryParams): Promise<string> {
   // read user config
   const configFile =
-    process.env.GHDIR_CONFIG ?? path.join(os.homedir(), '.ghdir.json');
+    process.env.GHDIR_CONFIG ?? path.join(os.homedir(), '.ghcopy.json');
 
-  const { alias }: UserConfig = fs.existsSync(configFile)
+  const { alias: _alias }: UserConfig = fs.existsSync(configFile)
     ? fs.readJsonSync(configFile)
     : {};
+
+  const alias: Record<string, string> = {
+    // pre templates
+    workspace: 'https://github.com/rocket-hangar/workspace-template',
+    web:
+      'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+    electron:
+      'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/electron',
+    ..._alias,
+  };
 
   const url: string = alias?.[_url] ?? _url;
 

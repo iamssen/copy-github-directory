@@ -3,7 +3,7 @@
   "version": "2020.08.24",
   "author": "SSen <i@ssen.name>",
   "license": "MIT",
-  "repository": "github:rocket-hangar/generate-github-directory",
+  "repository": "github:rocket-hangar/copy-github-directory",
   "workspaces": [
     "packages"
   ],
@@ -15,23 +15,24 @@
     "test": "yarn workspace packages run test",
     "coverage": "yarn workspace packages run coverage --coverageDirectory $PWD/coverage",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
-    "lint": "eslint \"**/*.{js,ts,tsx}\""
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "**/src/{**/*,*}.{ts,tsx}": [
       "prettier --write",
-      "eslint"
+      "eslint --max-warnings 0"
     ]
   },
   "devDependencies": {
-    "@handbook/markdown-source-import": "^1.0.1",
-    "@ssen/eslint-config": "^1.3.1",
-    "@ssen/prettier-config": "^1.2.0",
-    "eslint": "^7.19.0",
-    "eslint-config-prettier": "^7.2.0",
-    "husky": "^4.3.8",
+    "@handbook/markdown-source-import": "^1.1.0",
+    "@ssen/eslint-config": "^2.0.1",
+    "@ssen/prettier-config": "^2.0.1",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "typescript": "^4.1.3"
+    "typescript": "^4.2.4"
   }
 }

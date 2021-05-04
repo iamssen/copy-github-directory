@@ -1,9 +1,9 @@
 import { createTmpDirectory } from '@ssen/tmp-directory';
 import fs from 'fs-extra';
-import { generateGithubDirectory } from 'generate-github-directory';
+import { copyGithubDirectory } from 'copy-github-directory';
 import path from 'path';
 
-describe('generateGithubDirectory', () => {
+describe('copyGithubDirectory', () => {
   function assertWorkspaceTemplateHasFiles(directory: string) {
     expect(fs.existsSync(path.join(directory, 'package.json'))).toBeTruthy();
     expect(fs.existsSync(path.join(directory, 'yarn.lock'))).toBeTruthy();
@@ -25,7 +25,7 @@ describe('generateGithubDirectory', () => {
     const cwd: string = await createTmpDirectory();
 
     // Act
-    await generateGithubDirectory({
+    await copyGithubDirectory({
       cwd,
       url: 'https://github.com/rocket-hangar/workspace-template',
     });
@@ -40,7 +40,7 @@ describe('generateGithubDirectory', () => {
     const cwd: string = await createTmpDirectory();
 
     // Act
-    await generateGithubDirectory({
+    await copyGithubDirectory({
       cwd,
       url:
         'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
@@ -56,7 +56,7 @@ describe('generateGithubDirectory', () => {
     const targetDirectory: string = await createTmpDirectory();
 
     // Act
-    await generateGithubDirectory({
+    await copyGithubDirectory({
       cwd: targetDirectory,
       targetDirectory: '.',
       url:
@@ -72,7 +72,7 @@ describe('generateGithubDirectory', () => {
     const targetDirectory: string = await createTmpDirectory();
 
     // Act
-    await generateGithubDirectory({
+    await copyGithubDirectory({
       cwd: targetDirectory,
       targetDirectory: 'a/b/c',
       url:
@@ -88,7 +88,7 @@ describe('generateGithubDirectory', () => {
     const targetDirectory: string = await createTmpDirectory();
 
     // Act
-    await generateGithubDirectory({
+    await copyGithubDirectory({
       targetDirectory,
       url:
         'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
@@ -105,7 +105,7 @@ describe('generateGithubDirectory', () => {
     const projectName: string = 'project';
 
     // Act
-    await generateGithubDirectory({
+    await copyGithubDirectory({
       cwd,
       targetDirectory: workspacesName,
       url: 'https://github.com/rocket-hangar/workspace-template',
@@ -116,7 +116,7 @@ describe('generateGithubDirectory', () => {
     assertWorkspaceTemplateHasFiles(workspacesDirectory);
 
     // Act
-    await generateGithubDirectory({
+    await copyGithubDirectory({
       cwd: workspacesDirectory,
       targetDirectory: projectName,
       url:
@@ -139,13 +139,13 @@ describe('generateGithubDirectory', () => {
 
     expect(workspaces).toMatchObject([projectName]);
     expect(name).toBe(projectName);
-  });
+  }, 15000);
 
   test('should use alias from user config', async () => {
     // Arrange
     const configDirectory: string = await createTmpDirectory();
     const targetDirectory: string = await createTmpDirectory();
-    const configFile: string = path.join(configDirectory, '.ghdir.json');
+    const configFile: string = path.join(configDirectory, '.ghcopy.json');
 
     await fs.writeJson(configFile, {
       alias: {
@@ -157,7 +157,7 @@ describe('generateGithubDirectory', () => {
     process.env.GHDIR_CONFIG = configFile;
 
     // Act
-    await generateGithubDirectory({
+    await copyGithubDirectory({
       targetDirectory,
       url: 'web',
     });
@@ -175,7 +175,7 @@ describe('generateGithubDirectory', () => {
 
     // Act
     await expect(
-      generateGithubDirectory({
+      copyGithubDirectory({
         cwd,
         url:
           'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web/package.json',
@@ -190,7 +190,7 @@ describe('generateGithubDirectory', () => {
     fs.mkdirpSync(path.join(targetDirectory, '.git'));
 
     // Act
-    await generateGithubDirectory({
+    await copyGithubDirectory({
       targetDirectory,
       url:
         'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
@@ -208,7 +208,7 @@ describe('generateGithubDirectory', () => {
 
     // Act
     await expect(
-      generateGithubDirectory({
+      copyGithubDirectory({
         targetDirectory,
         url:
           'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
