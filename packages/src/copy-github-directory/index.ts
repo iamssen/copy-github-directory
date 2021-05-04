@@ -83,8 +83,10 @@ export async function copyGithubDirectory({
     : {};
 
   const alias: Record<string, string> = {
-    // pre templates
+    // pre defined templates
     workspace: 'https://github.com/rocket-hangar/workspace-template',
+    packages:
+      'https://github.com/rocket-hangar/rocket-punch-templates/tree/master/templates/packages',
     web:
       'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
     electron:
