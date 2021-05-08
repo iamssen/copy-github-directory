@@ -41,7 +41,8 @@ npx copy-github-directory <url> [directory]
 
 Just use it with `npx` command.
 
-But, if you install (`npm install -g copy-github-directory`), you can get the short command `ghcopy` instead of `copy-github-directory`.
+But, if you install (`npm install -g copy-github-directory`), you can get the short command `ghcopy` instead
+of `copy-github-directory`.
 
 # Command
 
@@ -108,6 +109,13 @@ Then you can use command with the alias.
 ```sh
 copy-github-directory web my-web-project
 ```
+
+## Pre-configured alias
+
+- `workspace`: `https://github.com/rocket-hangar/workspace-template`
+- `packages`: `https://github.com/rocket-hangar/rocket-punch-templates/tree/master/templates/packages`
+- `web`: `https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web`
+- `electron`: `https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/electron`
 
 # Related Projects
 

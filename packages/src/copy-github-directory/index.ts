@@ -7,6 +7,7 @@ import * as path from 'path';
 import { Stream } from 'stream';
 import tar from 'tar';
 import { promisify } from 'util';
+import { preConfiguredAlias } from './env';
 
 const pipeline = promisify(Stream.pipeline);
 
@@ -83,14 +84,7 @@ export async function copyGithubDirectory({
     : {};
 
   const alias: Record<string, string> = {
-    // pre defined templates
-    workspace: 'https://github.com/rocket-hangar/workspace-template',
-    packages:
-      'https://github.com/rocket-hangar/rocket-punch-templates/tree/master/templates/packages',
-    web:
-      'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
-    electron:
-      'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/electron',
+    ...preConfiguredAlias,
     ..._alias,
   };
 
