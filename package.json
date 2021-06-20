@@ -16,7 +16,7 @@
     "coverage": "yarn workspace packages run coverage --coverageDirectory $PWD/coverage",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "prepare": "husky install"
+    "postinstall": "husky install"
   },
   "lint-staged": {
     "**/src/{**/*,*}.{ts,tsx}": [
