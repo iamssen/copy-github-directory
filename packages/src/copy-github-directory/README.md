@@ -114,12 +114,3 @@ copy-github-directory web my-web-project
 
 - `workspace`: `https://github.com/rocket-hangar/workspace-template`
 - `packages`: `https://github.com/rocket-hangar/rocket-punch-templates/tree/master/templates/packages`
-- `web`: `https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web`
-- `electron`: `https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/electron`
-
-# Related Projects
-
-- <https://github.com/rocket-hangar/rocket-punch>
-- <https://github.com/rocket-hangar/rocket-scripts>
-- <https://github.com/rocket-hangar/handbook>
-- <https://github.com/rocket-hangar/copy-github-directory>
