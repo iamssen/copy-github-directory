@@ -75,6 +75,9 @@ export async function copyGithubDirectory({
   githubToken = process.env.GITHUB_TOKEN,
   workspace = true,
 }: CopyGithubDirectoryParams): Promise<string> {
+  // ---------------------------------------------
+  // copy process
+  // ---------------------------------------------
   // read user config
   const configFile =
     process.env.GHDIR_CONFIG ?? path.join(os.homedir(), '.ghcopy.json');
@@ -162,6 +165,10 @@ export async function copyGithubDirectory({
     ),
   );
 
+  // ---------------------------------------------
+  // post copy process
+  // ---------------------------------------------
+  // add directory to workspaces
   const cwdPackageJson: string = path.resolve(cwd, 'package.json');
   const directoryPackageJson: string = path.resolve(directory, 'package.json');
 
@@ -179,32 +186,33 @@ export async function copyGithubDirectory({
     // read <cwd>/package.json
     const cwdPackageJsonContents = await fs.readJson(cwdPackageJson);
 
-    // if <cwd>/package.json has the workspaces property = <cwd> is a workspace directory
-    if (Array.isArray(cwdPackageJsonContents.workspaces)) {
-      const workspaceName: string = path.basename(directory);
+    const workspaces = Array.isArray(cwdPackageJsonContents.workspaces)
+      ? cwdPackageJsonContents.workspaces
+      : [];
 
-      // read <directory>/package.json
-      const directoryPackageJsonContents = await fs.readJson(
-        directoryPackageJson,
-      );
+    const workspaceName: string = path.basename(directory);
 
-      // add workspaceName to <cwd>/package.json/[workspaces]
-      cwdPackageJsonContents.workspaces = [
-        ...cwdPackageJsonContents.workspaces,
-        path.relative(cwd, directory),
-      ];
+    // read <directory>/package.json
+    const directoryPackageJsonContents = await fs.readJson(
+      directoryPackageJson,
+    );
 
-      // change name of <directory>/package.json
-      directoryPackageJsonContents.name = workspaceName;
+    // add workspaceName to <cwd>/package.json/[workspaces]
+    cwdPackageJsonContents.workspaces = [
+      ...workspaces,
+      path.relative(cwd, directory),
+    ];
 
-      // update package.json files
-      await Promise.all([
-        fs.writeJson(cwdPackageJson, cwdPackageJsonContents, { spaces: 2 }),
-        fs.writeJson(directoryPackageJson, directoryPackageJsonContents, {
-          spaces: 2,
-        }),
-      ]);
-    }
+    // change name of <directory>/package.json
+    directoryPackageJsonContents.name = workspaceName;
+
+    // update package.json files
+    await Promise.all([
+      fs.writeJson(cwdPackageJson, cwdPackageJsonContents, { spaces: 2 }),
+      fs.writeJson(directoryPackageJson, directoryPackageJsonContents, {
+        spaces: 2,
+      }),
+    ]);
   }
 
   return directory;
