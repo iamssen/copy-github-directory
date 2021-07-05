@@ -1,5 +1,5 @@
 import fs from 'fs-extra';
-import gitUrlParse, { GitUrl } from 'git-url-parse';
+import { GitUrl } from 'git-url-parse';
 import got from 'got';
 import fetch, { HeadersInit } from 'node-fetch';
 import os from 'os';
@@ -8,6 +8,7 @@ import { Stream } from 'stream';
 import tar from 'tar';
 import { promisify } from 'util';
 import { preConfiguredAlias } from './env';
+import { parse } from './parse';
 
 const pipeline = promisify(Stream.pipeline);
 
@@ -93,6 +94,12 @@ export async function copyGithubDirectory({
 
   const url: string = alias?.[_url] ?? _url;
 
+  // http request headers
+  const headers: HeadersInit | undefined =
+    typeof githubToken === 'string'
+      ? { Authorization: `token ${githubToken}` }
+      : undefined;
+
   // parse github url
   const {
     name, // repository name
@@ -100,13 +107,7 @@ export async function copyGithubDirectory({
     filepath, // file location
     filepathtype, // 'blob' | 'tree' | ''
     ref: _ref, // master, develop, <sha>...
-  }: GitUrl = gitUrlParse(url);
-
-  // http request headers
-  const headers: HeadersInit | undefined =
-    typeof githubToken === 'string'
-      ? { Authorization: `token ${githubToken}` }
-      : undefined;
+  }: GitUrl = await parse(url, headers);
 
   // target ref = master, develop, <sha>...
   const ref: string =
@@ -161,7 +162,7 @@ export async function copyGithubDirectory({
     // extract tar.gz to directory
     tar.extract(
       { cwd: directory, strip: filepath ? filepath.split('/').length + 1 : 1 },
-      [`${name}-${ref}${filepath ? `/${filepath}` : ''}`],
+      [`${name}-${ref.replace(/\//g, '-')}${filepath ? `/${filepath}` : ''}`],
     ),
   );
 

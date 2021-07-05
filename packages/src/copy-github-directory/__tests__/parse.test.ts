@@ -1,8 +1,9 @@
-import gitUrlParse, { GitUrl } from 'git-url-parse';
+import { GitUrl } from 'git-url-parse';
+import { parse } from '../parse';
 
-describe('git-url-parse', () => {
+describe('parse()', () => {
   test('should parse the tree type url', async () => {
-    const url: GitUrl = gitUrlParse(
+    const url: GitUrl = await parse(
       'https://github.com/rocket-hangar/rocket-punch-workspace-example/tree/master/samples/web',
     );
 
@@ -30,7 +31,7 @@ describe('git-url-parse', () => {
   });
 
   test('should parse the root url', async () => {
-    const url: GitUrl = gitUrlParse(
+    const url: GitUrl = await parse(
       'https://github.com/rocket-hangar/rocket-punch-workspace-example',
     );
 
@@ -40,6 +41,20 @@ describe('git-url-parse', () => {
       ref: '',
       filepath: '',
       filepathtype: '',
+    });
+  });
+
+  test('error case1', async () => {
+    const url: GitUrl = await parse(
+      'https://github.com/terra-money/wallet-provider/tree/feature/next-support/templates/next',
+    );
+
+    expect(url).toMatchObject<Partial<GitUrl>>({
+      owner: 'terra-money',
+      name: 'wallet-provider',
+      ref: 'feature/next-support',
+      filepath: 'templates/next',
+      filepathtype: 'tree',
     });
   });
 });
