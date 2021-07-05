@@ -7,7 +7,7 @@ export async function run() {
     _: [url, targetDirectory],
     emit,
     workspace,
-  } = yargs
+  } = await yargs
     .usage('Usage: $0 <url> [targetDirectory]')
     .options({
       emit: {
