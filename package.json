@@ -28,10 +28,10 @@
     "@handbook/markdown-source-import": "^1.1.0",
     "@ssen/eslint-config": "^2.0.1",
     "@ssen/prettier-config": "^2.0.1",
-    "eslint": "^7.30.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "husky": "^7.0.0",
-    "lint-staged": "^11.0.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.1",
     "prettier": "^2.3.2",
     "typescript": "^4.3.5"
   }
