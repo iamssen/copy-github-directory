@@ -12,7 +12,7 @@ export async function parse(
   const branches: Branches = await fetch(
     `https://api.github.com/repos/${owner}/${name}/branches`,
     { headers },
-  ).then((res) => res.json());
+  ).then((res) => res.json() as Promise<Branches>);
 
   if (!branches.some((branch) => branch.name === name)) {
     const refPath = `${ref}/${filepath}`;

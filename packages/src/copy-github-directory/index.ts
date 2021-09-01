@@ -116,7 +116,7 @@ export async function copyGithubDirectory({
       : await fetch(`https://api.github.com/repos/${owner}/${name}`, {
           headers,
         })
-          .then((res) => res.json())
+          .then((res) => res.json() as Promise<{ default_branch: string }>)
           .then(({ default_branch }) => default_branch);
 
   // is filepath a directory
