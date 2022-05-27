@@ -13,7 +13,7 @@
     "view": "yarn workspace packages run view",
     "doctor": "yarn workspace packages run doctor",
     "test": "yarn workspace packages run test",
-    "coverage": "yarn workspace packages run coverage --coverageDirectory $PWD/coverage",
+    "coverage": "yarn workspace packages run coverage",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "postinstall": "husky install"
