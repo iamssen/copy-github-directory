@@ -1,6 +1,7 @@
 import { GitUrl } from 'git-url-parse';
 import { describe, expect, test } from 'vitest';
 import { parse } from '../parse';
+import fetch from 'node-fetch';
 
 describe('parse()', () => {
   test('should parse the tree type url', async () => {
