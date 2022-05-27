@@ -1,7 +1,8 @@
 import { createTmpDirectory } from '@ssen/tmp-directory';
-import fs from 'fs-extra';
 import { copyGithubDirectory } from 'copy-github-directory';
+import fs from 'fs-extra';
 import path from 'path';
+import { describe, expect, test } from 'vitest';
 
 describe('copyGithubDirectory', () => {
   function assertWorkspaceTemplateHasFiles(directory: string) {
@@ -42,8 +43,7 @@ describe('copyGithubDirectory', () => {
     // Act
     await copyGithubDirectory({
       cwd,
-      url:
-        'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+      url: 'https://github.com/rocket-hangar/templates/tree/main/web',
     });
 
     // Assert
@@ -59,8 +59,7 @@ describe('copyGithubDirectory', () => {
     await copyGithubDirectory({
       cwd: targetDirectory,
       targetDirectory: '.',
-      url:
-        'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+      url: 'https://github.com/rocket-hangar/templates/tree/main/web',
     });
 
     // Assert
@@ -75,8 +74,7 @@ describe('copyGithubDirectory', () => {
     await copyGithubDirectory({
       cwd: targetDirectory,
       targetDirectory: 'a/b/c',
-      url:
-        'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+      url: 'https://github.com/rocket-hangar/templates/tree/main/web',
     });
 
     // Assert
@@ -90,8 +88,7 @@ describe('copyGithubDirectory', () => {
     // Act
     await copyGithubDirectory({
       targetDirectory,
-      url:
-        'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+      url: 'https://github.com/rocket-hangar/templates/tree/main/web',
     });
 
     // Assert
@@ -119,8 +116,7 @@ describe('copyGithubDirectory', () => {
     await copyGithubDirectory({
       cwd: workspacesDirectory,
       targetDirectory: projectName,
-      url:
-        'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+      url: 'https://github.com/rocket-hangar/templates/tree/main/web',
     });
 
     // Assert
@@ -149,8 +145,7 @@ describe('copyGithubDirectory', () => {
 
     await fs.writeJson(configFile, {
       alias: {
-        web:
-          'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+        web: 'https://github.com/rocket-hangar/templates/tree/main/web',
       },
     });
 
@@ -177,8 +172,7 @@ describe('copyGithubDirectory', () => {
     await expect(
       copyGithubDirectory({
         cwd,
-        url:
-          'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web/package.json',
+        url: 'https://github.com/rocket-hangar/templates/tree/main/web/package.json',
       }),
     ).rejects.toThrow();
   });
@@ -192,8 +186,7 @@ describe('copyGithubDirectory', () => {
     // Act
     await copyGithubDirectory({
       targetDirectory,
-      url:
-        'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+      url: 'https://github.com/rocket-hangar/templates/tree/main/web',
     });
 
     // Assert
@@ -210,8 +203,7 @@ describe('copyGithubDirectory', () => {
     await expect(
       copyGithubDirectory({
         targetDirectory,
-        url:
-          'https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+        url: 'https://github.com/rocket-hangar/templates/tree/main/web',
       }),
     ).rejects.toThrow();
   });

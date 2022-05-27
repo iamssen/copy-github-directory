@@ -2,6 +2,7 @@ import { createTmpDirectory } from '@ssen/tmp-directory';
 import { copyGithubDirectory } from 'copy-github-directory';
 import fs from 'fs';
 import path from 'path';
+import { expect, test } from 'vitest';
 
 test('error1', async () => {
   // Arrange

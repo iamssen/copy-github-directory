@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [12, 14, 15]
+        node: [14, 16, 18]
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
@@ -55,9 +55,9 @@ jobs:
         run: yarn run lint
 
       - name: Coverage Test
-        run: npm run coverage
+        run: yarn run coverage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+#      - name: Upload coverage to Codecov
+#        uses: codecov/codecov-action@v1

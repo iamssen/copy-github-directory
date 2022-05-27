@@ -26,13 +26,14 @@
   },
   "devDependencies": {
     "@handbook/markdown-source-import": "^1.1.0",
-    "@ssen/eslint-config": "^2.0.1",
     "@ssen/prettier-config": "^2.0.1",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "husky": "^7.0.2",
-    "lint-staged": "^11.1.2",
-    "prettier": "^2.3.2",
-    "typescript": "^4.4.2"
-  }
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.2",
+    "prettier": "^2.6.2",
+    "typescript": "^4.7.2"
+  },
+  "packageManager": "yarn@3.2.1"
 }

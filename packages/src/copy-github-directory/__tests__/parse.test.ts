@@ -1,4 +1,5 @@
 import { GitUrl } from 'git-url-parse';
+import { describe, expect, test } from 'vitest';
 import { parse } from '../parse';
 
 describe('parse()', () => {

@@ -17,7 +17,7 @@ export interface CopyGithubDirectoryParams {
    * github url
    *
    * @example https://github.com/rocket-hangar/workspace-template
-   * @example https://github.com/rocket-hangar/workspace-template/tree/master/samples/web
+   * @example https://github.com/rocket-hangar/templates/tree/main/web
    */
   readonly url: string;
 
@@ -25,7 +25,7 @@ export interface CopyGithubDirectoryParams {
    * directory path to make
    *
    * @default https://github.com/rocket-hangar/workspace-template > workspace-template
-   * @default https://github.com/rocket-hangar/workspace-template/tree/master/samples/web > web
+   * @default https://github.com/rocket-hangar/templates/tree/main/web > web
    *
    * @example directory
    * @example path/directory

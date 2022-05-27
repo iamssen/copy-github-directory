@@ -22,15 +22,15 @@ export async function run() {
       },
     })
     .example(
-      '$0 https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web',
+      '$0 https://github.com/rocket-hangar/templates/tree/main/web',
       'copy files to $PWD/web',
     )
     .example(
-      '$0 https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web project',
+      '$0 https://github.com/rocket-hangar/templates/tree/main/web project',
       'copy files to $PWD/project',
     )
     .example(
-      '$0 https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web .',
+      '$0 https://github.com/rocket-hangar/templates/tree/main/web .',
       'copy files to $PWD',
     )
     .wrap(null)

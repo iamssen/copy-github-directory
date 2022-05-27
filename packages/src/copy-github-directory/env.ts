@@ -1,7 +1,6 @@
+// prettier-ignore
 export const preConfiguredAlias = {
   workspace: 'https://github.com/rocket-hangar/workspace-template',
-  packages:
-    'https://github.com/rocket-hangar/rocket-punch-templates/tree/master/templates/packages',
-  web:
-    'https://github.com/rocket-hangar/vite-templates/tree/main/templates/web',
+  packages: 'https://github.com/rocket-hangar/templates/tree/main/packages',
+  web: 'https://github.com/rocket-hangar/templates/tree/main/web',
 };

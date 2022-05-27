@@ -1,0 +1,18 @@
+{
+  "$schema": "https://rocket-hangar.github.io/rocket-punch/schemas/packages.json",
+  "copy-github-directory": {
+    "version": "1.5.0-alpha.1",
+    "tag": "canary",
+    "packageJson": {
+      "bin": {
+        "copy-github-directory": "./bin/copy-github-directory.js",
+        "ghcopy": "./bin/copy-github-directory.js"
+      },
+      "keywords": [
+        "github",
+        "clone",
+        "download"
+      ]
+    }
+  }
+}
