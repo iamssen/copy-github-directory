@@ -67,7 +67,7 @@ For example,
 
 ```sh
 cd my-monorepo
-npx copy-github-directory https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web project
+npx copy-github-directory https://github.com/rocket-hangar/templates/tree/main/web project
 ```
 
 It will write `package.json` files like below.
@@ -98,8 +98,8 @@ Make `.ghcopy.json` file on your home directory like below. (`$HOME/.ghcopy.json
 {
   "alias": {
     "workspace": "https://github.com/rocket-hangar/workspace-template",
-    "web": "https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/web",
-    "electron": "https://github.com/rocket-hangar/rocket-scripts-templates/tree/master/templates/electron"
+    "web": "https://github.com/rocket-hangar/templates/tree/main/web",
+    "packages": "https://github.com/rocket-hangar/templates/tree/main/packages"
   }
 }
 ```
@@ -112,5 +112,6 @@ copy-github-directory web my-web-project
 
 ## Pre-configured alias
 
-- `workspace`: `https://github.com/rocket-hangar/workspace-template`
-- `packages`: `https://github.com/rocket-hangar/rocket-punch-templates/tree/master/templates/packages`
+- `workspace`: `https://github.com/rocket-hangar/workspace-template` yarn berry based workspace template
+- `web`: `https://github.com/rocket-hangar/templates/tree/main/web` vite.js based web app template
+- `packages`: `https://github.com/rocket-hangar/templates/tree/main/packages` rocket-punch based multi-package template
