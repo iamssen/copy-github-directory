@@ -6,6 +6,7 @@
     "publish": "rocket-punch publish",
     "view": "rocket-punch view",
     "doctor": "rocket-punch doctor",
+    "release": "cross-env CI=true yarn run test && yarn run build && yarn run publish",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "precommit": "lint-staged"
@@ -16,10 +17,10 @@
     ]
   },
   "devDependencies": {
-    "@ssen/tmp-directory": "^3.0.3",
+    "@ssen/tmp-directory": "^4.0.0",
     "@types/fs-extra": "^9.0.13",
     "@types/git-url-parse": "^9.0.1",
-    "@types/node": "^17.0.35",
+    "@types/node": "^17.0.38",
     "@types/node-fetch": "^2.6.1",
     "@types/tar": "^6.1.1",
     "@types/yargs": "^17.0.10",
@@ -29,14 +30,14 @@
     "git-url-parse": "^11.6.0",
     "got": "^12.1.0",
     "husky": "^8.0.1",
-    "lint-staged": "^12.4.2",
+    "lint-staged": "^13.0.0",
     "node-fetch": "^2.6.7",
-    "rocket-punch": "^4.0.0-alpha.1",
+    "rocket-punch": "^4.0.0",
     "tar": "^6.1.11",
     "typescript": "^4.7.2",
-    "vite-tsconfig-paths": "^3.4.1",
-    "vitest": "^0.12.9",
+    "vite-tsconfig-paths": "^3.5.0",
+    "vitest": "^0.13.1",
     "yargs": "^17.5.1",
-    "zx": "^6.1.0"
+    "zx": "^6.2.0"
   }
 }

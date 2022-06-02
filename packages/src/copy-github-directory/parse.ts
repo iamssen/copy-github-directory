@@ -14,7 +14,7 @@ export async function parse(
     { headers },
   ).then((res) => res.json() as Promise<Branches>);
 
-  if (!branches.some((branch) => branch.name === name)) {
+  if (Array.isArray(branches) && !branches.some((branch) => branch.name === name)) {
     const refPath = `${ref}/${filepath}`;
     const exactBranch = branches.find(
       (branch) => refPath.indexOf(branch.name) === 0,
