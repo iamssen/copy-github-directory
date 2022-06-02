@@ -57,7 +57,7 @@ jobs:
       - name: Coverage Test
         run: yarn run coverage
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 #      - name: Upload coverage to Codecov
 #        uses: codecov/codecov-action@v1
